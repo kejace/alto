@@ -4,7 +4,6 @@ module ExampleModel
 import Contracts
 import Model
 
-
 xm :: Model
 xm = exampleModel ()
 
@@ -23,4 +22,3 @@ evalC (Model modelDate disc exch absorb rateModel) k = eval    -- punning on rec
          eval (When o c)     = disc   k (evalO o, eval c)
  --      eval (Anytime o c)  = snell  k (evalO o, eval c)
          eval (Until o c)    = absorb k (evalO o, eval c)
-

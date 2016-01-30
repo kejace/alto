@@ -2,6 +2,7 @@ module Main where
 
 import Contracts
 import ExampleModel
+import FinalTagless
 
 -----
 
@@ -19,7 +20,7 @@ c1 :: Contract
 c1 = zcb t1 10 USD
 
 c11 :: Contract
-c11 = european (mkDate 2)
+c11 = american ((mkDate 2), (mkDate 4))
           (zcb (mkDate 20) 0.4 USD `cAnd`
            zcb (mkDate 30) 9.3 USD `cAnd`
            zcb (mkDate 40) 109.3 USD `cAnd`
@@ -40,4 +41,5 @@ main :: IO ()
 main = do
         someFunc
         someMore
+        test
         return ()
