@@ -1,15 +1,13 @@
 module Main where
 
-import Contracts
-import ExampleModel
-import FinalTagless
+import Alto
 
 -----
 
 t1 :: Date
 t1 = mkDate t1Horizon
 
-t1Horizon = 3 :: TimeStep
+t1Horizon = 30 :: TimeStep
 
 -----
 
@@ -20,14 +18,16 @@ c1 :: Contract
 c1 = zcb t1 10 USD
 
 c11 :: Contract
-c11 = american ((mkDate 2), (mkDate 4))
+c11 = european (mkDate 20)
           (zcb (mkDate 20) 0.4 USD `cAnd`
            zcb (mkDate 30) 9.3 USD `cAnd`
            zcb (mkDate 40) 109.3 USD `cAnd`
            give (zcb (mkDate 12) 100 USD))
 
 pr1 :: PR Double
-pr1 = evalX c1
+pr1 = evalX c11
+
+------
 
 ------
 
