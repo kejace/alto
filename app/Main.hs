@@ -1,6 +1,9 @@
 module Main where
 
-import Alto
+import Alto.Contracts
+import Alto.ExampleModel
+import Alto.FinalTagless
+
 
 -----
 
