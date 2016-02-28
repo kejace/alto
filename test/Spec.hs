@@ -1,2 +1,6 @@
+module Main where
+
+import Reflex.Dom
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = mainWidget $ text $ "Tests not implemented yet"

@@ -18,6 +18,21 @@ mkDate s = ((),s)
 time0 :: Date
 time0 = mkDate 0
 
+t1' :: Date
+t1' = mkDate t1Horizon'
+
+t1Horizon' = 30 :: TimeStep
+
+-- class FTContract repr where
+--       ftZero :: repr ()
+--       ftOne :: repr Currency
+--       ftAnd :: repr Contract -> repr Contract
+
+-- instance FTContract Eval where
+--       ftZero = 0
+--       ftOne = USD
+--       ftAnd (Eval l) (Eval r) = Eval $ l + r
+
 data Contract =
      Zero
    | One  Currency
