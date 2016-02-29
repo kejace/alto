@@ -15,8 +15,8 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Alto.Contracts, Alto.ExampleModel, Alto.FinalTagless, Alto.Model
-  build-depends:       base >= 4.7 && < 5
+  exposed-modules:     Alto.Contracts, Alto.ExampleModel, Alto.FinalTagless, Alto.Model, Sparklines
+  build-depends:       base >= 4.7 && < 5, ansi-wl-pprint
   default-language:    Haskell2010
 
 executable alto
@@ -25,6 +25,7 @@ executable alto
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , alto
+                     , ansi-wl-pprint
   default-language:    Haskell2010
 
 test-suite alto-test

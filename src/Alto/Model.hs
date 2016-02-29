@@ -29,10 +29,10 @@ evalS :: Model -> Currency -> Contract -> String
 evalS m@(Model modelDate disc exch absorb rateModel) k = eval 
   where eval Zero           = "0"
         eval (One k2)       = "exch(" ++ (show k) ++ ", " ++ (show k2) ++ ")"
-        eval (Give c)       = error "Give not implemented"
+        eval (Give c)       = "-" ++ (eval c)
         eval (o `Scale` c)  = "scale(" ++ show ((head $ unPr $ evalO o)) ++ ", " ++ (eval c) -- this is dubious
-        eval (c1 `And` c2)  = error "And not implemented"
-        eval (c1 `Or` c2)   = error "Or not implemented"
+        eval (c1 `And` c2)  = (eval c1) ++ " && " ++ (eval c2)
+        eval (c1 `Or` c2)   = (eval c1) ++ " || " ++ (eval c2)
         eval (Cond o c1 c2) = error "Cond not implemented"
         eval (When o c)     = "when(" ++ (show o) ++ ", " ++ (evalS m k c) ++ ")"
         eval (Anytime _ _ ) = error "Anytime is not implemented"

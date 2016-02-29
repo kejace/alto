@@ -5,6 +5,10 @@ import Alto.ExampleModel
 import Alto.FinalTagless
 import Alto.Model
 
+import Sparklines
+
+import Text.PrettyPrint.ANSI.Leijen
+
 -----
 
 t1 :: Date
@@ -47,15 +51,23 @@ expr = pint 90 `pcompare` (pint 3 `pmul` (pint 10 `padd` pint 20))
 
 main :: IO ()
 main = do
-        putStrLn $ "Contract haskell: " ++ c1s
+        putStrLn $ "\nContract haskell: " ++ c1s
         putStrLn $ "Contract output"
         putStrLn $ show $ c1
         putStrLn $ "Contract stringified"
         putStrLn $ show $ evalSX c1
         putStrLn $ "Contract evaluated"
-        putStrLn $ show $ expectedValuePr $ evalX c1
+        drawSparkLineWithStats $ expectedValuePr $ evalX c1
 
-        putStrLn $ "FT:"
+        putStrLn $ "\nContract haskell: " ++ c11s
+        putStrLn $ "Contract output"
+        putStrLn $ show $ c11
+        putStrLn $ "Contract stringified"
+        putStrLn $ show $ evalSX c11
+        putStrLn $ "Contract evaluated"
+        drawSparkLineWithStats $ expectedValuePr $ evalX c11
+
+        putStrLn $ "\nFT:"
         putStrLn $ (runStringify expr) ++ " : " ++ (show $ (runEval expr))
 
         return ()
